@@ -1,0 +1,10 @@
+<h1><%= @bubble_tea.name%></h1>
+<p><%= @bubble_tea.flavor%></p>
+
+<ul>
+<p><%= @bubble_tea.ingredients.each do |ingredient|%>
+<li><%= ingredient%></li>
+<%=end%>
+</ul>
+
+
