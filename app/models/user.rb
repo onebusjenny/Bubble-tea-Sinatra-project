@@ -1,7 +1,4 @@
 class User < ActiveRecord::Base
-
-has_many :bubble_tea
-
-
-
-end
+    validates_presence_of :user_name, :user_email, :password
+    has_secure_password
+  end

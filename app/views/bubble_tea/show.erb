@@ -1,10 +1,16 @@
-<h1><%= @bubble_tea.name%></h1>
-<p><%= @bubble_tea.flavor%></p>
 
+<label>Bubble Tea Name:</label>
+<h1><%= @bubble_tea.name%></h1>
+<label>Your flavor</label>
+<p><%= @bubble_tea.flavor%></p>
 <ul>
-<p><%= @bubble_tea.ingredients.each do |ingredient|%>
-<li><%= ingredient%></li>
+<p><%= @bubble_tea.bubble_tea_ingredients.each do |ingredient|%>
+<li><%= bubble_tea.name%></li>
 <%=end%>
+<form method="post" action="/bubble_tea/<%= @bubble_tea.id %>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="delete">
+</form>
 </ul>
 
 

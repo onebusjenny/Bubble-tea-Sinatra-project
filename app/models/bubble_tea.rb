@@ -1,6 +1,9 @@
 class BubbleTea < ActiveRecord::Base
 
-has_many :ingredients
+belongs_to :user
+has_many :bubble_tea_ingredients
+has_many :ingredients, through: :bubble_tea_ingredients
+
 
 end
 

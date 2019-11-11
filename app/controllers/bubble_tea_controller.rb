@@ -17,6 +17,7 @@ end
 #created bubble tea
 post '/bubble_tea' do
     @bubble_tea = BubbleTea.new
+    redirect '/bubble_tea'
 end
 
 #find the bubble tea by the id 
@@ -32,9 +33,15 @@ get '/bubble_tea/:id/edit' do
     erb :'/bubble_tea/edit'
 end
 
+#update the existing bubble tea form
+patch '/bubble_tea/:id' do
+    @bubble_tea = BubbleTea.find(params[:id])
+end
+
 #delete existing bubble tea
-delete '/bubble_tea/:id'
+delete '/bubble_tea/:id' do
     @bubble_tea.delete
+    redirect '/bubble_tea'
 end
 
 
