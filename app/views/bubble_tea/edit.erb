@@ -1,4 +1,12 @@
-<form action="/bubble_tea/<%= @bubble_tea.id %>" method="post">
-    <input id="hidden" type="hidden" name="_method" value="patch">
-    <input type="text" ...>
+<h1>Edit Bubble Tea</h1>
+<form action="/bubble_tea/<%=@bubble_tea.id%>" method="post">
+  <input type="hidden" name="_method" value="PATCH" id="hidden">
+  <label for="name">Bubble Tea Name:</label>
+  <input type="text" name="name" value="<%=@bubble_tea.name%>" id ="name">
+  <label for="flavor">Tea flavor</label>
+  <input type="text" name="flavor" value="<%=@bubble_tea.flavor%>" id ="flavor">
+  <label for="Ingredients">Ingredients</label>
+  <input type="text" name="ingredients" value="<%=@bubble_tea.ingredients%>" id ="ingredients">
+  
+  <input type="submit" id = "submit" value="submit">
 </form>

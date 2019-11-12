@@ -4,7 +4,7 @@ class BubbleTeaController < Sinatra::Base
 #showing all the bubble tea the user have or not
 #if this is the current_user show bubble tea id, if not create account
 get '/bubble_tea' do
-    @bubble_tea = Bubble_Tea.all
+    @bubble_tea = BubbleTea.all
     erb :'/bubble_tea/index'
 end
 

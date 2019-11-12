@@ -1,0 +1,19 @@
+"Welcom, <%=@user.user_name%>!"
+
+
+
+<h1>All bubble tea</h1>
+<% @bubble_tea.each.do |bubbletea|%>
+
+<ul>
+<h2> <a href= "/bubble_tea<%=bubble_tea.user_id%>">
+<%=bubble_tea.user.user_name%></a>
+</h2>
+<li> Bubble Tea Name: <%= bubble_tea.name%> </li>
+<%# <li> Tea Flavor: <%= bubble_tea.flavor%> %>
+<li> Ingredients: <%= bubble_tea.ingredients%></li>
+</ul>
+
+<% end %>
+<%# <a href="/logout">Log Out</a> %>
+
