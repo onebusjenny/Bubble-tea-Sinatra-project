@@ -3,16 +3,23 @@ class UsersController < ApplicationController
 
 get '/signup' do
     erb :'/users/signup'
-     redirect '/bubble_tea/index'
 end
 
-get '/login' do
+post '/signup' do
+  @user =User.new(name: params["user_name"],email: params["user_email"], password: params["password"])
+  @user.save
+  session[:user_id] = @user.id
+
+  redirect '/users/bubble_tea/index'
+end
+
+get '/users/login' do
   
-    erb :'/users/login'
+    erb :'users/login'
 end
 
 
-post '/login' do
+post '/users/login' do
   @user = User.find_by(:user_name=> params[:user_name])
   if @user && @user.authenticate(params[:password])
   #sessions to log the user in, after set session, then redirect
