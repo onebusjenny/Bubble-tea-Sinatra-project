@@ -1,0 +1,28 @@
+<h1>Customize your bubble tea</h1>
+
+<form action="/bubble_teas" method="POST">
+  <label>Name:</label>
+
+  <br><br>
+
+  <input type="text" name="bubble_tea[name]" id="bubble_tea_name">
+
+  <br><br>
+
+    <label>Tea Flavor:</label>
+    <br><br>
+    <input type="text" name="bubble_tea[flavor]" id="bubble_tea_flavor">
+    <br><br>
+  <label>Pick the ingredient you want:</label>
+  <br><br>
+
+  <% @ingredients.each do |ingredient| %>
+    <input type="checkbox" name="bubble_tea[ingredient_ids][]" 
+    id= "<%= ingredient.id%>" value = "<%= ingredient.id%>">
+    <%=ingredient.name%> 
+    <br><br>
+  <% end %>
+  
+  
+  <input type="submit" value="Create bubble tea">
+</form>

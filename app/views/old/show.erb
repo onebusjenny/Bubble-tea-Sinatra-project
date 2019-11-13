@@ -13,4 +13,13 @@
 </form>
 </ul>
 
+<ul>
+<p><%= @bubble_tea.ingredients.each do |ingredient|%></p>
+<li><%= bubble_tea.name%></li>
+<%=end%>
+<form method="post" action="/bubble_tea/<%= @bubble_tea.id %>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="delete">
+</form>
+</ul>
 

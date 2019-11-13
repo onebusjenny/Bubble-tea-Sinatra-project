@@ -12,7 +12,7 @@ post '/signup' do
     password: params["password"])
   if user.save
   session[:user_id] = user.id
-  redirect '/users/#{user}'
+  redirect "/users/#{user.id}"
   else
     redirect '/signup'
   end
@@ -23,7 +23,7 @@ get '/login' do
     current_user
     redirect "/users/#{current_user.user_name}"
   else
-    erb :'users/login'
+    erb :'/users/login'
   end
 end
 
@@ -32,21 +32,25 @@ post '/login' do
   user = User.find_by(user_name: params[:user_name])
   if user && user.authenticate(params[:password])
     session[:user_id]= user.id
-    redirect "/bubble_tea/#{user.id}"
+    redirect "/bubble_teas/#{user.id}"
   else
     redirect "/users/signup" 
   end
 end
 
 get '/logout' do
-  sesson.clear
+  session.clear
   redirect '/'
 end
 
 get '/users/:id' do
-  @user = User.find_by(id: session[:user_id])
-
-  erb :'/bubble_tea'
+  user = User.find_by(id: session[:user_id])
+  @bubble_teas = user.bubble_teas
+  if @bubble_teas.any?  
+  erb :"/bubble_teas/show.html"
+  else 
+  redirect "/bubble_teas/new"
+  end
 end
 
 
