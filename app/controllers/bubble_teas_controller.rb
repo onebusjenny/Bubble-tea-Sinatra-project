@@ -15,12 +15,16 @@ class BubbleTeasController < ApplicationController
   # POST: /bubble_teas
   post "/bubble_teas" do
     # binding.pry
-    @bubble_tea = BubbleTea.create(
+    @bubble_tea = BubbleTea.new(
     :name => params[:bubble_tea][:name], 
     :flavor => params[:bubble_tea][:flavor])
-    # :ingredients =>params[:bubble_tea][:ingredients])
-  
-    redirect "/bubble_teas"
+    @bubble_tea.ingredient_ids = params[:bubble_tea][:ingredient_ids]
+    if @bubble_tea.has_ingredients? && @bubble_tea.save
+    
+      redirect "/bubble_teas"
+    else
+      redirect "/bubble_teas/new"
+    end
   end
 
   # GET: /bubble_teas/5

@@ -4,10 +4,17 @@
 <% @bubble_teas.each do |bubble_tea| %>
 <ul>
 <br>
-<li> Bubble Tea Name: <%= bubble_tea.name%></li>
-<li> Bubble Tea Flavor: <%= bubble_tea.flavor%></li>
-<%# <li> Ingredients: <%= bubble_tea.ingredients %></li> %>
-</ul>
-<%end%>
 
+<li> Bubble Tea Name: <a href =  "bubble_teas/<%=bubble_tea.id%>" >  <%= bubble_tea.name%> </a></li>
+<li> Bubble Tea Flavor: <%= bubble_tea.flavor%></li>
+
+
+
+<li> Bubble Tea Ingredients: <% bubble_tea.ingredients.each do |ingredient|%>
+<%= ingredient.name%> </li>
+<%end%>
+ 
+</ul>
+
+<%end%>
 
