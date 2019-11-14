@@ -2,7 +2,7 @@ class BubbleTeasController < ApplicationController
 
   # GET: /bubble_teas
   get "/bubble_teas" do
-    @bubble_tea = BubbleTea.all
+    @bubble_teas = BubbleTea.all
     erb :"/bubble_teas/index.html"
   end
 
@@ -15,10 +15,11 @@ class BubbleTeasController < ApplicationController
   # POST: /bubble_teas
   post "/bubble_teas" do
     # binding.pry
-    @bubble_tea = BubbleTea.new
-# if there's no ingreidnet/name/ then no
-
-
+    @bubble_tea = BubbleTea.create(
+    :name => params[:bubble_tea][:name], 
+    :flavor => params[:bubble_tea][:flavor])
+    # :ingredients =>params[:bubble_tea][:ingredients])
+  
     redirect "/bubble_teas"
   end
 
@@ -41,8 +42,9 @@ class BubbleTeasController < ApplicationController
   end
 
   # DELETE: /bubble_teas/5/delete
-  delete "/bubble_teas/:id/delete" do
-    @bubble_tea.delete
+  delete "/bubble_teas/:id" do
+    @bubble_tea = BubbleTea.find(params[:id])
+    @bubble_tea.destroy
     redirect "/bubble_teas"
   end
 end

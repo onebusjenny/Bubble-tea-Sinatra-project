@@ -1,7 +1,9 @@
 
 <h1>Bubble Tea Name:</h1>
 <h1><%= @bubble_tea.name%></h1>
-<label>Your flavor</label>
+<br>
+  
+<label>Your flavor:</label>
 <p><%= @bubble_tea.flavor%></p>
 <ul>
     <p><% @bubble_tea.ingredients.each do |ingredient|%></p>
@@ -9,6 +11,9 @@
     <%end%>
 
 </ul>
-
+<button><form action="/bubble_teas/<%=@bubble_tea.id%>" method="post">
+    <input type="hidden" name="_method" value="delete" id="hidden">
+    <input type="submit" value="Delete Bubble Tea">
+  </form></button>
 
 
