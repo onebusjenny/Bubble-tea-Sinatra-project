@@ -35,14 +35,30 @@ class BubbleTeasController < ApplicationController
 
   # GET: /bubble_teas/5/edit
   get "/bubble_teas/:id/edit" do
-    @bubble_tea = BubbleTea.find(params[:id])
-    erb :"/bubble_teas/edit.html"
+    @bubble_tea = BubbleTea.find(params[:id])   
+    if @bubble_tea 
+      erb :"/bubble_teas/edit.html"
+    else 
+      redirect to "/bubble_teas"
+    end
   end
 
   # PATCH: /bubble_teas/5
   patch "/bubble_teas/:id" do
     @bubble_tea = BubbleTea.find(params[:id])
-    redirect "/bubble_teas/#{bubble_tea.id}"
+
+    if  @bubble_tea
+      
+      @bubble_tea.update(
+        :name => params[:bubble_tea][:name],
+        :flavor => params[:bubble_tea][:flavor]) 
+        @bubble_tea.ingredient_ids = params[:bubble_tea][:ingredient_ids]
+        flash[:message] = "You've updated your bubble tea"
+    else
+      flash.now[:message]= "Sorry, something went wrong"
+      erb :'bubble_teas/edit.html'
+    end
+    redirect "/bubble_teas"
   end
 
   # DELETE: /bubble_teas/5/delete

@@ -3,10 +3,18 @@
   <input type="hidden" name="_method" value="PATCH" id="hidden">
   <label for="name">Bubble Tea Name:</label>
   <input type="text" name="name" value="<%=@bubble_tea.name%>" id ="name">
+  <br>
   <label for="flavor">Tea flavor</label>
   <input type="text" name="flavor" value="<%=@bubble_tea.flavor%>" id ="flavor">
-  <label for="Ingredients">Ingredients</label>
-  <input type="text" name="ingredients" value="<%=@bubble_tea.ingredients%>" id ="ingredients">
+  <br>
+ <label for="Ingredients">Ingredients</label>
+  <% @ingredients.each do |ingredient| %>
+    <input type="checkbox" name="ingredient.id" 
+    id= "<%= ingredient.id%>" >
+    <%=ingredient.name%> 
+    <% end %>
+    <br><br>
   
-  <input type="submit" id = "submit" value="submit">
+  
+  <input type="submit" class="button" value="Save">
 </form>
