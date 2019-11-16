@@ -1,20 +1,32 @@
 <h1>Edit Bubble Tea</h1>
-<form action="/bubble_tea/<%=@bubble_tea.id%>" method="post">
+
+<form action="/bubble_teas/<%=@bubble_tea.id%>" method="post">
   <input type="hidden" name="_method" value="PATCH" id="hidden">
-  <label for="name">Bubble Tea Name:</label>
-  <input type="text" name="name" value="<%=@bubble_tea.name%>" id ="name">
-  <br>
-  <label for="flavor">Tea flavor</label>
-  <input type="text" name="flavor" value="<%=@bubble_tea.flavor%>" id ="flavor">
-  <br>
- <label for="Ingredients">Ingredients</label>
-  <% @ingredients.each do |ingredient| %>
-    <input type="checkbox" name="ingredient.id" 
-    id= "<%= ingredient.id%>" >
-    <%=ingredient.name%> 
-    <% end %>
+  <label>Name:</label>
+
+  <br><br>
+
+  <input type="text" name="bubble_tea[name]" id="bubble_tea_name">
+
+  <br><br>
+
+    <label>Tea Flavor:</label>
     <br><br>
+    <input type="text" name="bubble_tea[flavor]" id="bubble_tea_flavor">
+    <br><br>
+  <label>Ingredient:</label>
+   <% @ingredients.each do |ingredient| %>
+    <input type="checkbox" name="bubble_tea[ingredient_ids][]" 
+    id= "<%= ingredient.id%>" value = "<%= ingredient.id%>">
+    <%=ingredient.name%> 
+    
+    <br><br>
+  <% end %>
+  
+  <br><br>
+
+ 
   
   
-  <input type="submit" class="button" value="Save">
+   <input type="submit" id = "submit" value="Save">
 </form>
