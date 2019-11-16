@@ -15,18 +15,16 @@
     <input type="text" name="bubble_tea[flavor]" id="bubble_tea_flavor">
     <br><br>
   <label>Ingredient:</label>
-   <% @ingredients.each do |ingredient| %>
+  
+   <% @bubble_tea.ingredients.each do |ingredient| %>
     <input type="checkbox" name="bubble_tea[ingredient_ids][]" 
     id= "<%= ingredient.id%>" value = "<%= ingredient.id%>">
     <%=ingredient.name%> 
-    
     <br><br>
   <% end %>
   
-  <br><br>
-
- 
   
+  <br><br>
   
    <input type="submit" id = "submit" value="Save">
 </form>
