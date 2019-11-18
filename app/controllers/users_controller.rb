@@ -12,7 +12,7 @@ post '/signup' do
     password: params["password"])
   if user.save
   session[:user_id] = user.id
-  redirect "/users/#{user.id}"
+  redirect "/bubble_teas"
   else
     redirect '/signup'
   end
