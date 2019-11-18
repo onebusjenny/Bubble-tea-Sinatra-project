@@ -1,23 +1,18 @@
 
-<h1>All your bubble teas</h1>
+<h1>Bubble Tea Community</h1>
+<h3>Share your bubble tea creation with us</h3>
 
 <% @bubble_teas.each do |bubble_tea| %>
 <ul>
 <br>
-
-<li> Bubble Tea Name: <a href =  "bubble_teas/<%=bubble_tea.id%>" >  <%= bubble_tea.name%> </a></li>
-<li> Bubble Tea Flavor: <%= bubble_tea.flavor%></li>
-
-
-
-<li> Bubble Tea Ingredients: <% bubble_tea.ingredients.each do |ingredient|%>
-<%= ingredient.name%> </li>
-<%end%>
- 
+    <li> Bubble Tea Name: <a href =  "bubble_teas/<%=bubble_tea.id%>" >  <%= bubble_tea.name%> </a></li>
+    <li> Bubble Tea Flavor: <%= bubble_tea.flavor%></li>
+    <li> Bubble Tea Ingredients: <% bubble_tea.ingredients.each do |ingredient|%>
+        <%= ingredient.name%> </li>
+    <%end%>
 </ul>
-
+<li>created_by: <%= bubble_tea.user.user_name%></li>
 <%end%>
-
 <br><br>
 <button><a href="/bubble_teas/new"><button type="button" name="button">Create bubble tea</a></button>
-<p><a href ="/logout"> Log Out </a>
+<button><a href ="/logout"> Log Out </a></button>

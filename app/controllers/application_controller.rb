@@ -16,10 +16,6 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
-  get '/hello' do
-    @session = session
-  end
-
   helpers do
 		def logged_in?
 			!!session[:user_id]

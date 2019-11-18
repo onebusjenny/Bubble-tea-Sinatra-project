@@ -8,5 +8,7 @@ class BubbleTea < ActiveRecord::Base
     def has_ingredients?
         self.ingredients.any?
     end
+
+    
 end
 

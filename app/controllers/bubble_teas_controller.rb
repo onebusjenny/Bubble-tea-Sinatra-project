@@ -14,11 +14,11 @@ class BubbleTeasController < ApplicationController
 
   # POST: /bubble_teas
   post "/bubble_teas" do
-    # binding.pry
     @bubble_tea = BubbleTea.new(
     :name => params[:bubble_tea][:name], 
     :flavor => params[:bubble_tea][:flavor])
     @bubble_tea.ingredient_ids = params[:bubble_tea][:ingredient_ids]
+    @bubble_tea.user = current_user
     if @bubble_tea.has_ingredients? && @bubble_tea.save
     
       redirect "/bubble_teas"
@@ -36,6 +36,7 @@ class BubbleTeasController < ApplicationController
   # GET: /bubble_teas/5/edit
   get "/bubble_teas/:id/edit" do
     @bubble_tea = BubbleTea.find(params[:id])   
+    @ingredients = Ingredient.all
     erb :"/bubble_teas/edit.html"
   end
 

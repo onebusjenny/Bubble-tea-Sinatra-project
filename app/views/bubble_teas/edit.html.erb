@@ -16,7 +16,7 @@
     <br><br>
   <label>Ingredient:</label>
   
-   <% @bubble_tea.ingredients.each do |ingredient| %>
+    <% @ingredients.each do |ingredient| %>
     <input type="checkbox" name="bubble_tea[ingredient_ids][]" 
     id= "<%= ingredient.id%>" value = "<%= ingredient.id%>">
     <%=ingredient.name%> 
