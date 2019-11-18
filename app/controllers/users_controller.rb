@@ -21,7 +21,7 @@ end
 get '/login' do
   if logged_in?
     current_user
-    redirect "/users/#{current_user.user_name}"
+    redirect "/bubble_teas"
   else
     erb :'/users/login'
   end
@@ -32,7 +32,7 @@ post '/login' do
   user = User.find_by(user_name: params[:user_name])
   if user && user.authenticate(params[:password])
     session[:user_id]= user.id
-    redirect "/bubble_teas/#{user.id}"
+    redirect "/bubble_teas"
   else
     redirect "/users/signup" 
   end
