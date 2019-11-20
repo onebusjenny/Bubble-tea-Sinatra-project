@@ -9,6 +9,5 @@ class BubbleTea < ActiveRecord::Base
         self.ingredients.any?
     end
 
-    
 end
 
