@@ -18,30 +18,9 @@ post '/signup' do
   end
 end
 
-get '/login' do
-  if logged_in?
-    current_user
-    redirect "/bubble_teas"
-  else
-    erb :'/users/login'
-  end
-end
+#session controller
 
 
-post '/login' do
-  user = User.find_by(user_name: params[:user_name])
-  if user && user.authenticate(params[:password])
-    session[:user_id]= user.id
-    redirect "/bubble_teas"
-  else
-    redirect "/users/signup" 
-  end
-end
-
-get '/logout' do
-  session.clear
-  redirect '/'
-end
 
 get '/users/:id' do
   user = User.find_by(id: session[:user_id])
